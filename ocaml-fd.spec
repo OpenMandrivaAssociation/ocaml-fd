@@ -1,7 +1,6 @@
 %define name	ocaml-fd
 %define version	1.0.0
-%define release	%mkrel 1
-%define ocaml_sitelib %(if [ -x /usr/bin/ocamlc ]; then ocamlc -where;fi)/site-lib
+%define release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -22,7 +21,7 @@ descriptors. Currently, send_fd, recv_fd and fexecve are implemented.
 %package	devel
 Summary:	Development files for %{name}
 Group:		Development/Other
-Obsoletes:	%{name}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This package contains the development files needed to build applications
@@ -48,9 +47,15 @@ rm -f %{buildroot}/%{ocaml_sitelib}/stublibs/*.owner
 %clean
 rm -rf %{buildroot}
 
-%files devel
+%files
 %defattr(-,root,root)
 %doc INSTALL LICENSE doc/html
-%{ocaml_sitelib}/fd
+%dir %{ocaml_sitelib}/fd
+%{ocaml_sitelib}/fd/*.cmi
+
+%files devel
+%defattr(-,root,root)
+%{ocaml_sitelib}/fd/*
+%exclude %{ocaml_sitelib}/fd/*.cmi
 %{ocaml_sitelib}/stublibs/dllfd.so
 
