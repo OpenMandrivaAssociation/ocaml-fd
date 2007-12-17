@@ -12,7 +12,6 @@ License:	LGPL
 Group:		Development/Other
 BuildRequires:	ocaml
 BuildRequires:  findlib
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This OCaml library implements miscellaneous functions related to UNIX file
