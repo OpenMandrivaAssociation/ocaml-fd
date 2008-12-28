@@ -1,6 +1,6 @@
 %define name	ocaml-fd
 %define version	1.0.0
-%define release	%mkrel 5
+%define release	%mkrel 6
 
 Name:		%{name}
 Version:	%{version}
@@ -11,7 +11,7 @@ URL:		http://oss.digirati.com.br/ocaml-fd
 License:	LGPL
 Group:		Development/Other
 BuildRequires:	ocaml
-BuildRequires:  findlib
+BuildRequires:  ocaml-findlib
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -37,12 +37,12 @@ make doc
 
 %install
 rm -rf %{buildroot}
-install -d -m 755 %{buildroot}/%{ocaml_sitelib}
-install -d -m 755 %{buildroot}/%{ocaml_sitelib}/stublibs
+install -d -m 755 %{buildroot}/%{_libdir}/ocaml
+install -d -m 755 %{buildroot}/%{_libdir}/ocaml/stublibs
 install -d -m 755 %{buildroot}/%_defaultdocdir/%{name}/html
-ocamlfind install fd META -destdir %{buildroot}/%{ocaml_sitelib} \
+ocamlfind install fd META -destdir %{buildroot}/%{_libdir}/ocaml \
   fd.cmi fd.mli fd.cma fd.cmxa dllfd.so libfd.a fd.a
-rm -f %{buildroot}/%{ocaml_sitelib}/stublibs/*.owner
+rm -f %{buildroot}/%{_libdir}/ocaml/stublibs/*.owner
 
 %clean
 rm -rf %{buildroot}
@@ -50,12 +50,15 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc INSTALL LICENSE doc/html
-%dir %{ocaml_sitelib}/fd
-%{ocaml_sitelib}/fd/*.cmi
+%dir %{_libdir}/ocaml/fd
+%{_libdir}/ocaml/fd/*.cmi
+%{_libdir}/ocaml/fd/*.cma
+%{_libdir}/ocaml/fd/META
+%{_libdir}/ocaml/stublibs/*.so
 
 %files devel
 %defattr(-,root,root)
-%{ocaml_sitelib}/fd/*
-%exclude %{ocaml_sitelib}/fd/*.cmi
-%{ocaml_sitelib}/stublibs/dllfd.so
+%{_libdir}/ocaml/fd/*.a
+%{_libdir}/ocaml/fd/*.mli
+%{_libdir}/ocaml/fd/*.cmxa
 
