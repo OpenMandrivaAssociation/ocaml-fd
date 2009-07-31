@@ -1,12 +1,12 @@
 %define name	ocaml-fd
-%define version	1.0.0
-%define release	%mkrel 7
+%define version	1.1.0
+%define release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	Descriptor-passing functions for OCaml
-Source: 	http://oss.digirati.com.br/ocaml-fd/ocaml-fd-%{version}.tar.bz2
+Source: 	http://oss.digirati.com.br/ocaml-fd/ocaml-fd-%{version}.tar.gz
 URL:		http://oss.digirati.com.br/ocaml-fd
 License:	LGPL
 Group:		Development/Other
@@ -31,30 +31,30 @@ using %{name}.
 %setup -q -n ocaml-fd-%{version}
 
 %build
-make all
-make allopt
+make all opt
 make doc
 
 %install
 rm -rf %{buildroot}
-install -d -m 755 %{buildroot}/%{_libdir}/ocaml
-install -d -m 755 %{buildroot}/%{_libdir}/ocaml/stublibs
-install -d -m 755 %{buildroot}/%_defaultdocdir/%{name}/html
-ocamlfind install fd META -destdir %{buildroot}/%{_libdir}/ocaml \
-  fd.cmi fd.mli fd.cma fd.cmxa dllfd.so libfd.a fd.a
-rm -f %{buildroot}/%{_libdir}/ocaml/stublibs/*.owner
+export DESTDIR=%{buildroot}
+export OCAMLFIND_DESTDIR=%{buildroot}/%{_libdir}/ocaml
+export DLLDIR=$OCAMLFIND_DESTDIR/stublibs
+mkdir -p $OCAMLFIND_DESTDIR/stublibs
+mkdir -p $OCAMLFIND_DESTDIR/fd
+make install
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc INSTALL LICENSE doc/html
+%doc INSTALL LICENSE doc/fd
 %dir %{_libdir}/ocaml/fd
 %{_libdir}/ocaml/fd/*.cmi
 %{_libdir}/ocaml/fd/*.cma
 %{_libdir}/ocaml/fd/META
 %{_libdir}/ocaml/stublibs/*.so
+%{_libdir}/ocaml/stublibs/*.owner
 
 %files devel
 %defattr(-,root,root)
