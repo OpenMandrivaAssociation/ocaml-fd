@@ -11,7 +11,8 @@ URL:		http://oss.digirati.com.br/ocaml-fd
 License:	LGPL
 Group:		Development/Other
 BuildRequires:	ocaml
-BuildRequires:  ocaml-findlib
+BuildRequires:	ocaml-findlib
+BuildRequires:	tetex-latex
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
