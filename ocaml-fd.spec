@@ -63,3 +63,47 @@ rm -rf %{buildroot}
 %{_libdir}/ocaml/fd/*.mli
 %{_libdir}/ocaml/fd/*.cmxa
 
+
+
+%changelog
+* Sat Aug 01 2009 Florent Monnier <blue_prawn@mandriva.org> 1.1.0-1mdv2010.0
++ Revision: 405305
+- latex BuildRequires
+- updated version
+
+* Sat Jun 27 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.0.0-7mdv2010.0
++ Revision: 390083
+- rebuild
+
+* Mon Dec 29 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.0.0-6mdv2009.1
++ Revision: 320763
+- move non-devel files into main package
+- site-lib hierarchy doesn't exist anymore
+
+* Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 1.0.0-5mdv2009.0
++ Revision: 254262
+- rebuild
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 1.0.0-3mdv2008.1
++ Revision: 136633
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Wed Sep 19 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.0.0-3mdv2008.0
++ Revision: 90013
+- rebuild
+
+* Sat Sep 01 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.0.0-2mdv2008.0
++ Revision: 77682
+- drop macro definition, now in rpm-mandriva-setup
+  ship .cmi file in non-devel subpackage
+
+* Fri Aug 31 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.0.0-1mdv2008.0
++ Revision: 77097
+- import ocaml-fd
+
+
+* Fri Aug 31 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.0.0-1mdv2008.0
+- contributed by Andre Nathan <andre@digirati.com.br>
