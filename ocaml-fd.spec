@@ -7,7 +7,7 @@ Version:	%{version}
 Release:	%{release}
 Summary:	Descriptor-passing functions for OCaml
 Source: 	http://oss.digirati.com.br/ocaml-fd/ocaml-fd-%{version}.tar.gz
-URL:		http://oss.digirati.com.br/ocaml-fd
+URL:		https://oss.digirati.com.br/ocaml-fd
 License:	LGPL
 Group:		Development/Other
 BuildRequires:	ocaml
