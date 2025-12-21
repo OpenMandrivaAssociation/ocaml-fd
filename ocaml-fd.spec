@@ -10,6 +10,7 @@ Source: 	http://oss.digirati.com.br/ocaml-fd/ocaml-fd-%{version}.tar.gz
 URL:		https://oss.digirati.com.br/ocaml-fd
 License:	LGPL
 Group:		Development/Other
+BuildRequires:	make
 BuildRequires:	ocaml
 BuildRequires:	ocaml-findlib
 BuildRequires:	tetex-latex
